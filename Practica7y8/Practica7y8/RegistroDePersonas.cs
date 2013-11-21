@@ -114,7 +114,24 @@ namespace Practica7y8
 		    this.cerrarConexion();		
 		}
 		
-		
+		private int ejecutarComando(string sql)
+		{
+			MySqlCommand micomando = new MySqlCommand(sql,this.EscuelaConexion);
+			int afectadas = micomando.ExecuteNonQuery();	
+			micomando.Dispose();
+			micomando = null;
+			return afectadas;
+		}
+	
+		private string querySelect() 
+		{
+			return "SELECT *" + "FROM Persona";
+		}
+
+		private string queryBuscar()
+		{
+			return "SELECT id FROM Persona WHERE id="+id;
+		}
 		
 	}
 }
