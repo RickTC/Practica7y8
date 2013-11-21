@@ -2,11 +2,68 @@ using System;
 
 namespace Practica7y8
 {
-	public class RegistroDePersonas
+	public class RegistroDePersonas : ConexionMySql
 	{
-		public RegistroDePersonas ()
+		private	string nombre,email;
+		private int id,telefono,codigo;
+		
+		public RegistroDePersonas (){}
+		
+		public void nuevoRegistro()
 		{
+			this.comenzarConexion();
+			
+			Console.WriteLine ("Ingrese los siguientes datos para el nuevo registro.");
+			Console.WriteLine("Nombre: "); nombre = Console.ReadLine ();
+			Console.WriteLine("Codigo: "); codigo = int.Parse(Console.ReadLine());
+			Console.WriteLine("Telefono: "); telefono =int.Parse (Console.ReadLine ());
+			Console.WriteLine("Email: "); email = Console.ReadLine ();
+			
+			string sql = "INSERT INTO `Persona` (`nombre`,`codigo`,`telefono`,`email`) " +
+						 "VALUES ('"+ nombre +"','"+ codigo+"'," +"'"+ telefono +"','"+ email +"')";
+			
+			this.ejecutarComando(sql);		
+			Console.WriteLine("Registro agregado con exito\n");
+			this.cerrarConexion();			
 		}
+		
+		public void editarRegistros()
+		{
+			this.comenzarConexion();
+			
+			Console.Write("Ingrese el ID del registro a modificar: ");
+			id=int.Parse(Console.ReadLine());
+			
+			MySqlCommand micomando = new MySqlCommand(this.queryBuscar(),this.EscuelaConexion);
+			MySqlDataReader myReader = micomando.ExecuteReader();
+			
+			if(myReader.Read())
+			{			
+				Console.WriteLine("Nombre"); nombre = Console.ReadLine();	
+				Console.WriteLine("Codigo"); codigo = int.Parse(Console.ReadLine());
+				Console.WriteLine("Telefono"); telefono = int.Parse(Console.ReadLine());			
+				Console.WriteLine("Email"); email = Console.ReadLine ();
+				
+				string sql = "UPDATE `Persona` SET `nombre`='" + nombre + "',`codigo`='" + codigo + "',`telefono`='"+ telefono +"'" +
+							 ",`email`='"+ email +"' WHERE (`id`='" + id + "')";
+				myReader.Close();
+				myReader =null;
+				micomando.Dispose();
+				micomando=null;
+				
+				this.ejecutarComando(sql);
+				Console.WriteLine("Registro con ID "+id+" modificado con EXITO");
+				
+			}	
+			else 
+			Console.WriteLine("ID "+ id +" NO EXISTE");
+		    }
+		
+		
+		
+		
+		
+		
 	}
 }
 
