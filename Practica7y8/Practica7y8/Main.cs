@@ -6,7 +6,8 @@ namespace Practica7y8
 	{
 		public static void Main (string[] args)
 		{
-		
+			Menu menu = new Menu();
+			menu.menuPrograma();
 		}
 	}
 }

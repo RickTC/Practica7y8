@@ -1,5 +1,6 @@
 using System;
-
+using MySql.Data.MySqlClient;
+using System.Data;
 namespace Practica7y8
 {
 	public class RegistroDePersonas : ConexionMySql
