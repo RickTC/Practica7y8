@@ -1,6 +1,22 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Practica7y8/Main.cs">
+    <Files>
+      <File FileName="Practica7y8/Main.cs" Line="10" Column="24" />
+      <File FileName="Practica7y8/ConexionMySql.cs" Line="8" Column="45" />
+      <File FileName="Practica7y8/RegistroDePersonas.cs" Line="3" Column="19" />
+      <File FileName="Practica7y8/Menu.cs" Line="50" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Practica7y8" expanded="True">
+            <Node name="Main.cs" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
