@@ -6,7 +6,7 @@ namespace Practica7y8
 	{
 		public static void Main (string[] args)
 		{
-			Console.WriteLine ("Hello World!");
+		
 		}
 	}
 }
