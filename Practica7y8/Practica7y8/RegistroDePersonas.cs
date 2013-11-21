@@ -38,7 +38,7 @@ namespace Practica7y8
 			MySqlDataReader myReader = micomando.ExecuteReader();
 			
 			if(myReader.Read())
-			{			
+			{
 				Console.WriteLine("Nombre"); nombre = Console.ReadLine();	
 				Console.WriteLine("Codigo"); codigo = int.Parse(Console.ReadLine());
 				Console.WriteLine("Telefono"); telefono = int.Parse(Console.ReadLine());			
@@ -57,10 +57,62 @@ namespace Practica7y8
 			}	
 			else 
 			Console.WriteLine("ID "+ id +" NO EXISTE");
-		    }
+		}
 		
+		public void eliminarRegistro()
+		{
+		this.comenzarConexion();
+	
+			Console.Write("ID del registro a eliminar: ");
+			id=int.Parse(Console.ReadLine ());
+			
+			MySqlCommand micomando = new MySqlCommand(this.queryBuscar(),this.EscuelaConexion);
+			MySqlDataReader myReader = micomando.ExecuteReader();
 		
+			if(myReader.Read ())
+			{			
+				string sql = "DELETE  FROM `Persona` WHERE id="+id;
+				
+				myReader.Close();
+				myReader =null;
+				micomando.Dispose();
+				micomando=null;	
+				
+				this.ejecutarComando(sql);
+				Console.WriteLine("SE ELIMINO EL ID "+id+" CON EXITO");
+			
+			}
+			else
+			Console.WriteLine ("ID "+id+" NO EXISTE");	
 		
+		this.cerrarConexion();	
+		}
+		
+		public void mostrarRegistros()
+		{
+		   this.comenzarConexion();
+			
+			MySqlCommand micomando = new MySqlCommand(this.querySelect(),EscuelaConexion);
+			MySqlDataReader myReader = micomando.ExecuteReader();
+			
+			while(myReader.Read())
+			{
+				id = int.Parse(myReader["id"].ToString());
+				nombre = myReader["nombre"].ToString();
+				codigo = int.Parse(myReader["codigo"].ToString());
+				telefono = int.Parse(myReader["telefono"].ToString());
+				email = myReader["email"].ToString();
+			
+				Console.WriteLine (" ID:" + id +"\n Nombre:" + nombre + "\n Codigo:" + codigo +
+				                   "\n Telefono:" + telefono + "\n Email:" + email);
+				Console.WriteLine ("--------------------------");
+			}
+			myReader.Close();
+			myReader =null;
+			micomando.Dispose();
+			micomando=null;
+		    this.cerrarConexion();		
+		}
 		
 		
 		
