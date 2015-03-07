@@ -13,8 +13,8 @@ namespace Practica7y8
 			string conectar = 
 			"Server=localhost;"+
 			"Database=BasedePrueba;"+
-			"User ID=root;"+		
-			"Password=maromero2594;"+
+			"User ID=root;"+	
+			"Password=contraseña;"+
 			"Pooling=false;";
 			
 		this.EscuelaConexion= new MySqlConnection (conectar);
